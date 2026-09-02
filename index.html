@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPARK 火花服</title>
+  <meta name="description" content="SPARK 火花服 - Server of Playing Architecture & Redstone Knowledge，生电 × 建筑 Minecraft 服务器">
+  <link rel="icon" type="image/png" href="assets/icon.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- 导航栏 -->
+  <nav class="navbar" id="navbar">
+    <a class="nav-brand" href="#top">
+      <img src="assets/icon.png" alt="SPARK">
+      <span>SPARK<small>火花服</small></span>
+    </a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="菜单">☰</button>
+    <div class="nav-links" id="nav-links">
+      <a href="#about">关于我们</a>
+      <a href="#gallery">画廊</a>
+      <a href="#hardware">硬件支持</a>
+      <a href="#team">管理团队</a>
+      <a href="#join" class="nav-cta">加入我们</a>
+    </div>
+  </nav>
+
+  <!-- 首屏 -->
+  <header class="hero" id="top">
+    <div class="hero-bg"></div>
+    <div class="hero-inner">
+      <img class="hero-icon" src="assets/icon.png" alt="">
+      <h1 class="hero-title" id="hero-title">SPARK</h1>
+      <p class="hero-fullname" id="hero-fullname"></p>
+      <p class="hero-subtitle" id="hero-subtitle"></p>
+      <div class="hero-buttons" id="hero-buttons"></div>
+      <p class="hero-note" id="hero-note"></p>
+    </div>
+    <div class="hero-stripe"></div>
+  </header>
+
+  <!-- 关于我们 -->
+  <section class="about section-light" id="about">
+    <div class="container about-grid">
+      <div class="about-logo">
+        <img src="assets/logo.png" alt="SPARK Logo">
+      </div>
+      <div class="about-text">
+        <p class="section-tag">01 / ABOUT</p>
+        <h2 id="about-title"></h2>
+        <div id="about-paragraphs"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 画廊 -->
+  <section class="gallery section-dark" id="gallery">
+    <div class="container">
+      <p class="section-tag">02 / GALLERY</p>
+      <h2 id="gallery-title"></h2>
+      <p class="section-sub" id="gallery-subtitle"></p>
+      <p class="uptime">服务器已运行 <span id="uptime">&nbsp;</span></p>
+      <div class="carousel" id="carousel">
+        <div class="carousel-track" id="carousel-track"></div>
+        <button class="carousel-btn prev" id="carousel-prev" aria-label="上一张">‹</button>
+        <button class="carousel-btn next" id="carousel-next" aria-label="下一张">›</button>
+        <div class="carousel-dots" id="carousel-dots"></div>
+      </div>
+    </div>
+    <div class="hero-stripe"></div>
+  </section>
+
+  <!-- 硬件支持 -->
+  <section class="hardware section-light" id="hardware">
+    <div class="container">
+      <p class="section-tag">03 / HARDWARE</p>
+      <h2 id="hardware-title"></h2>
+      <p class="section-sub" id="hardware-subtitle"></p>
+      <div class="hw-grid" id="hw-grid"></div>
+    </div>
+  </section>
+
+  <!-- 管理团队 -->
+  <section class="team section-dark" id="team">
+    <div class="container">
+      <p class="section-tag">04 / TEAM</p>
+      <h2 id="team-title"></h2>
+      <p class="section-sub" id="team-subtitle"></p>
+      <div class="team-grid" id="team-grid"></div>
+    </div>
+    <div class="hero-stripe"></div>
+  </section>
+
+  <!-- 加入我们 -->
+  <section class="join" id="join">
+    <div class="container join-inner">
+      <h2 id="join-title"></h2>
+      <p id="join-text"></p>
+      <a class="btn btn-solid" id="join-button" href="#" target="_blank" rel="noopener"></a>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-logo">
+        <img src="assets/logo.png" alt="SPARK">
+      </div>
+      <div class="footer-info">
+        <h3>SPARK 火花服</h3>
+        <p id="footer-credits"></p>
+        <p id="footer-contact"></p>
+        <p id="footer-icp"></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
