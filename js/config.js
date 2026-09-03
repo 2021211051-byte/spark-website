@@ -48,9 +48,9 @@ const SITE = {
     title: "画廊",
     subtitle: "火花之下的世界",
     images: [
-      { src: "images/gallery-1.jpg", caption: "服务器风景" },
-      { src: "images/gallery-2.jpg", caption: "建筑作品" },
-      { src: "images/gallery-3.jpg", caption: "红石机器" },
+      { src: "images/gallery-1.jpg", caption: "毛主席雕像 by: joey/QevD" },
+      { src: "images/gallery-2.jpg", caption: "教堂 by: qaivu" },
+      { src: "images/gallery-3.jpg", caption: "猪人农场 by: joey" },
       { src: "images/portrait.jpg", caption: "画像 by: Ruby" },
     ],
   },
