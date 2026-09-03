@@ -55,21 +55,20 @@
     </div>
   </section>
 
-  <!-- 画廊 -->
-  <section class="gallery section-dark" id="gallery">
-    <div class="container">
+  <!-- 画廊（整屏背景轮播，文字居中） -->
+  <section class="gallery" id="gallery">
+    <div class="gallery-bg" id="gallery-bg"></div>
+    <div class="gallery-overlay">
       <p class="section-tag">02 / GALLERY</p>
-      <h2 id="gallery-title"></h2>
-      <p class="section-sub" id="gallery-subtitle"></p>
+      <h2 class="gallery-title" id="gallery-title"></h2>
+      <p class="gallery-subtitle" id="gallery-subtitle"></p>
       <p class="uptime">服务器已运行 <span id="uptime">&nbsp;</span></p>
-      <div class="carousel" id="carousel">
-        <div class="carousel-track" id="carousel-track"></div>
-        <button class="carousel-btn prev" id="carousel-prev" aria-label="上一张">‹</button>
-        <button class="carousel-btn next" id="carousel-next" aria-label="下一张">›</button>
-        <div class="carousel-dots" id="carousel-dots"></div>
-      </div>
+      <div class="carousel-dots" id="carousel-dots"></div>
     </div>
-    <div class="hero-stripe"></div>
+    <button class="carousel-btn prev" id="carousel-prev" aria-label="上一张">‹</button>
+    <button class="carousel-btn next" id="carousel-next" aria-label="下一张">›</button>
+    <div class="hero-stripe stripe-top"></div>
+    <div class="hero-stripe stripe-bottom"></div>
   </section>
 
   <!-- 硬件支持 -->

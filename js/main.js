@@ -38,7 +38,7 @@
   $("#gallery-title").textContent = SITE.gallery.title;
   $("#gallery-subtitle").textContent = SITE.gallery.subtitle;
 
-  const track = $("#carousel-track");
+  const bg = $("#gallery-bg");
   const dotsBox = $("#carousel-dots");
   const images = SITE.gallery.images;
   let current = 0;
@@ -46,20 +46,27 @@
 
   images.forEach((img, i) => {
     const slide = document.createElement("div");
-    slide.className = "carousel-slide" + (i === 0 ? " active" : "");
+    slide.className = "gallery-slide" + (i === 0 ? " active" : "");
 
     const im = document.createElement("img");
     im.src = img.src;
     im.alt = img.caption || SITE.gallery.title + " " + (i + 1);
+    // 竖版图片完整展示，不裁剪
+    im.addEventListener("load", () => {
+      if (im.naturalHeight > im.naturalWidth) slide.classList.add("is-portrait");
+    });
+    if (im.complete && im.naturalWidth) {
+      if (im.naturalHeight > im.naturalWidth) slide.classList.add("is-portrait");
+    }
     slide.appendChild(im);
 
     if (img.caption) {
       const cap = document.createElement("div");
-      cap.className = "carousel-caption";
+      cap.className = "gallery-caption";
       cap.textContent = img.caption;
       slide.appendChild(cap);
     }
-    track.appendChild(slide);
+    bg.appendChild(slide);
 
     const dot = document.createElement("button");
     dot.className = i === 0 ? "active" : "";
@@ -70,7 +77,7 @@
 
   function goTo(i) {
     current = (i + images.length) % images.length;
-    track.querySelectorAll(".carousel-slide").forEach((s, idx) =>
+    bg.querySelectorAll(".gallery-slide").forEach((s, idx) =>
       s.classList.toggle("active", idx === current)
     );
     dotsBox.querySelectorAll("button").forEach((d, idx) =>

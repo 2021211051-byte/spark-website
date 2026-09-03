@@ -283,56 +283,106 @@ h2 {
 
 .about-text h2 { margin-bottom: 24px; }
 
-/* ---------- 画廊 ---------- */
-.uptime {
-  font-family: var(--font-mono);
-  color: var(--yellow);
-  font-size: 15px;
-  letter-spacing: 2px;
-  margin-bottom: 28px;
-}
-
-.carousel {
+/* ---------- 画廊：整屏背景轮播（仿 lzalien） ---------- */
+.gallery {
   position: relative;
-  max-width: 900px;
-  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: var(--light);
+  padding: 0;
 }
 
-.carousel-track { position: relative; height: 460px; }
-
-.carousel-slide {
+.gallery-bg {
   position: absolute;
   inset: 0;
-  opacity: 0;
-  transition: opacity .8s ease;
-  border: 4px solid var(--orange);
-}
-
-.carousel-slide.active { opacity: 1; z-index: 2; }
-
-.carousel-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+  z-index: 0;
   background: var(--dark);
 }
 
-.carousel-caption {
+/* 压一层暗色渐变，保证文字可读 */
+.gallery-bg::after {
+  content: "";
   position: absolute;
-  left: 0; bottom: 0;
+  inset: 0;
+  background: linear-gradient(180deg,
+    rgba(26, 24, 22, .6),
+    rgba(26, 24, 22, .3) 45%,
+    rgba(26, 24, 22, .7));
+}
+
+.gallery-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+
+.gallery-slide.active { opacity: 1; }
+
+.gallery-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 竖版图片完整展示，不裁剪 */
+.gallery-slide.is-portrait img { object-fit: contain; }
+
+.gallery-overlay {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 120px 24px 100px;
+}
+
+.gallery-title {
+  font-size: clamp(72px, 15vw, 170px);
+  font-weight: 900;
+  letter-spacing: clamp(8px, 2vw, 24px);
+  line-height: 1.15;
+  color: transparent;
+  -webkit-text-stroke: 2px rgba(250, 248, 245, .92);
+  text-shadow: 0 0 34px rgba(245, 81, 28, .45);
+  margin-bottom: 0;
+}
+
+.gallery-subtitle {
+  letter-spacing: 10px;
+  font-size: clamp(15px, 2.4vw, 26px);
+  color: #f0e9de;
+  margin-top: 4px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, .7);
+}
+
+.gallery .uptime {
+  margin-top: 30px;
+  font-size: clamp(14px, 1.8vw, 20px);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, .8);
+}
+
+.gallery-caption {
+  position: absolute;
+  left: 24px;
+  bottom: 36px;
+  z-index: 3;
   background: rgba(26, 24, 22, .85);
   color: var(--yellow);
   padding: 8px 20px;
   font-size: 14px;
   letter-spacing: 2px;
-  z-index: 3;
 }
+
+.gallery .carousel-btn { z-index: 5; }
+.gallery .carousel-btn.prev { left: 24px; }
+.gallery .carousel-btn.next { right: 24px; }
 
 .carousel-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 5;
   width: 48px;
   height: 48px;
   border: none;
@@ -345,26 +395,42 @@ h2 {
 }
 
 .carousel-btn:hover { background: var(--yellow); color: var(--dark); }
-.carousel-btn.prev { left: -24px; }
-.carousel-btn.next { right: -24px; }
+
+.gallery .carousel-dots {
+  position: relative;
+  z-index: 3;
+  margin-top: 36px;
+}
 
 .carousel-dots {
   display: flex;
   gap: 10px;
   justify-content: center;
-  margin-top: 22px;
 }
 
 .carousel-dots button {
   width: 34px;
   height: 6px;
   border: none;
-  background: #4a453e;
+  background: rgba(250, 248, 245, .35);
   cursor: pointer;
   transition: background .2s;
 }
 
 .carousel-dots button.active { background: var(--orange); }
+
+/* 上下警示条纹：与关于我们 / 硬件支持衔接成边框 */
+.stripe-top,
+.stripe-bottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 12px;
+  z-index: 4;
+}
+
+.stripe-top { top: 0; }
+.stripe-bottom { bottom: 0; }
 
 /* ---------- 硬件支持 ---------- */
 .hw-grid {
@@ -533,9 +599,9 @@ h2 {
 
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
 
-  .carousel-track { height: 300px; }
-  .carousel-btn.prev { left: 8px; }
-  .carousel-btn.next { right: 8px; }
+  .carousel-btn.prev { left: 10px; }
+  .carousel-btn.next { right: 10px; }
 
   section { padding: 64px 0; }
+  .gallery { padding: 0; }
 }
