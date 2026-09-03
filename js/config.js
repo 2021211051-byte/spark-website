@@ -74,12 +74,12 @@ const SITE = {
     title: "管理团队",
     subtitle: "点击成员卡片可跳转主页",
     members: [
-      { name: "joey", role: "技术服主 / 红石 / 建筑 / 后勤", img: "", link: "" },
-      { name: "QevD", role: "服主 / 建筑 / 后勤", img: "", link: "" },
-      { name: "Nemophilist", role: "后勤", img: "", link: "" },
-      { name: "Moore", role: "红石", img: "", link: "" },
-      { name: "sofia", role: "后勤", img: "", link: "" },
-      { name: "qaivu", role: "建筑 / 红石 / 后勤", img: "", link: "" },
+      { name: "joey", role: "技术服主 / 红石 / 建筑 / 后勤", img: "images/avatars/joey.png", link: "" },
+      { name: "QevD", role: "服主 / 建筑 / 后勤", img: "images/avatars/qevd.png", link: "" },
+      { name: "Nemophilist", role: "后勤", img: "images/avatars/nemophilist.png", link: "" },
+      { name: "Moore", role: "红石", img: "images/avatars/moore.png", link: "" },
+      { name: "sofia", role: "后勤", img: "images/avatars/sofia.png", link: "" },
+      { name: "qaivu", role: "建筑 / 红石 / 后勤", img: "images/avatars/qaivu.png", link: "" },
     ],
   },
 
