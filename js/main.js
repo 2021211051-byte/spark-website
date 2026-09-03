@@ -167,7 +167,38 @@
   $("#join-text").textContent = SITE.footer.joinText;
   const joinBtn = $("#join-button");
   joinBtn.textContent = SITE.footer.joinButton;
-  joinBtn.href = SITE.footer.joinLink;
+
+  // 提示条（复制群号时显示）
+  const toast = document.createElement("div");
+  toast.style.cssText =
+    "position:fixed;left:50%;bottom:40px;transform:translateX(-50%);" +
+    "background:#1a1816;color:#f7b512;padding:12px 28px;font-size:15px;" +
+    "letter-spacing:1px;border:2px solid #f7b512;z-index:999;display:none;";
+  document.body.appendChild(toast);
+  function showToast(msg) {
+    toast.textContent = msg;
+    toast.style.display = "block";
+    setTimeout(() => (toast.style.display = "none"), 2500);
+  }
+
+  const joinLink = SITE.footer.joinLink.trim();
+  if (/^\d{5,}$/.test(joinLink)) {
+    // 纯数字 = QQ 群号，点击复制
+    joinBtn.href = "#";
+    joinBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const done = () => showToast("群号 " + joinLink + " 已复制，打开 QQ 搜索加群吧！");
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(joinLink).then(done).catch(() => {
+          window.prompt("复制群号：", joinLink);
+        });
+      } else {
+        window.prompt("复制群号：", joinLink);
+      }
+    });
+  } else if (joinLink && joinLink !== "#") {
+    joinBtn.href = joinLink;
+  }
 
   $("#footer-credits").textContent = SITE.footer.credits.join("　·　");
   $("#footer-contact").textContent = SITE.footer.contact;
