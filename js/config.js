@@ -51,6 +51,7 @@ const SITE = {
       { src: "images/gallery-1.jpg", caption: "服务器风景" },
       { src: "images/gallery-2.jpg", caption: "建筑作品" },
       { src: "images/gallery-3.jpg", caption: "红石机器" },
+      { src: "images/portrait.jpg", caption: "画像 by: Ruby" },
     ],
   },
 
