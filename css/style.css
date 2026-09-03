@@ -310,7 +310,11 @@ h2 {
     rgba(26, 24, 22, .6),
     rgba(26, 24, 22, .3) 45%,
     rgba(26, 24, 22, .7));
+  transition: opacity .9s ease;
 }
+
+/* 画像（竖版图）单独取消上下变暗 */
+.gallery.no-dim::after { opacity: 0; }
 
 /* 图片固定不动：页面滚动时背景保持原位（仿 lzalien） */
 .gallery-slide {

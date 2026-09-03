@@ -77,13 +77,21 @@
 
   function goTo(i) {
     current = (i + images.length) % images.length;
-    bg.querySelectorAll(".gallery-slide").forEach((s, idx) =>
+    const slides = bg.querySelectorAll(".gallery-slide");
+    slides.forEach((s, idx) =>
       s.classList.toggle("active", idx === current)
     );
     dotsBox.querySelectorAll("button").forEach((d, idx) =>
       d.classList.toggle("active", idx === current)
     );
+    // 竖版画像：单独取消上下变暗
+    document.getElementById("gallery").classList.toggle(
+      "no-dim",
+      slides[current].classList.contains("is-portrait")
+    );
   }
+
+  goTo(0);
 
   function restart() {
     clearInterval(timer);
