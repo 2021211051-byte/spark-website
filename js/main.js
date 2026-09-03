@@ -49,8 +49,15 @@
     slide.className = "gallery-slide" + (i === 0 ? " active" : "");
 
     const im = document.createElement("img");
-    im.src = img.src;
     im.alt = img.caption || SITE.gallery.title + " " + (i + 1);
+    if (i === 0) {
+      // 首张立即加载
+      im.src = img.src;
+    } else {
+      // 非首张：懒加载，滚动到画廊附近时才真正请求
+      im.loading = "lazy";
+      im.dataset.src = img.src;
+    }
     // 竖版图片完整展示，不裁剪
     im.addEventListener("load", () => {
       if (im.naturalHeight > im.naturalWidth) slide.classList.add("is-portrait");
@@ -75,8 +82,43 @@
     dotsBox.appendChild(dot);
   });
 
+  // 触发某张图的真正加载（尚未加载时）
+  function loadImage(i) {
+    const im = bg.children[i] && bg.children[i].querySelector("img");
+    if (im && im.dataset.src && !im.src) {
+      im.src = im.dataset.src;
+      delete im.dataset.src;
+    }
+  }
+
+  // 画廊即将滚入视口时，按顺序陆续加载剩余图片
+  let preloadIdx = 1;
+  function preloadNext() {
+    if (preloadIdx >= images.length) return;
+    const i = preloadIdx++;
+    const im = bg.children[i] && bg.children[i].querySelector("img");
+    if (!im) return preloadNext();
+    if (im.dataset.src && !im.src) {
+      im.addEventListener("load", () => setTimeout(preloadNext, 200), { once: true });
+      im.addEventListener("error", () => setTimeout(preloadNext, 200), { once: true });
+      im.src = im.dataset.src;
+      delete im.dataset.src;
+    } else {
+      preloadNext();
+    }
+  }
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver((entries) => {
+      if (entries.some((e) => e.isIntersecting)) { preloadNext(); io.disconnect(); }
+    }, { rootMargin: "0px 0px 50% 0px" });
+    io.observe(document.getElementById("gallery"));
+  } else {
+    preloadNext();
+  }
+
   function goTo(i) {
     current = (i + images.length) % images.length;
+    loadImage(current);
     const slides = bg.querySelectorAll(".gallery-slide");
     slides.forEach((s, idx) =>
       s.classList.toggle("active", idx === current)

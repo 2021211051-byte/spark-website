@@ -72,11 +72,11 @@ const SITE = {
    * link 可填 B 站空间等链接，点卡片会跳转，不需要则留空 "" 。
    */
   team: {
-    title: "管理团队",
+    title: "成员列表",
     subtitle: "点击成员卡片可跳转主页",
     members: [
       { name: "joey", role: "技术服主 / 红石 / 建筑 / 后勤", img: "images/avatars/joey.png", link: "" },
-      { name: "QevD", role: "服主 / 建筑 / 后勤", img: "images/avatars/qevd.png", link: "" },
+      { name: "QevD", role: "服主 / 建筑 / 后勤", img: "images/avatars/qevd.png", link: "https://www.douyin.com/user/MS4wLjABAAAA8OWfHkQVEBoLXSjAiZICqi739mC0hw6G_IxCoEvb5GU?from_tab_name=main" },
       { name: "Nemophilist", role: "后勤", img: "images/avatars/nemophilist.png", link: "" },
       { name: "Moore", role: "红石", img: "images/avatars/moore.png", link: "" },
       { name: "sofia", role: "后勤", img: "images/avatars/sofia.png", link: "" },
