@@ -81,6 +81,7 @@ const SITE = {
       { name: "Moore", role: "红石", img: "images/avatars/moore.png", link: "" },
       { name: "sofia", role: "后勤", img: "images/avatars/sofia.png", link: "" },
       { name: "qaivu", role: "建筑 / 红石 / 后勤", img: "images/avatars/qaivu.png", link: "" },
+      { name: "Ruby", role: "画师", img: "", link: "" },
     ],
   },
 
