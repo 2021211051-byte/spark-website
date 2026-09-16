@@ -52,7 +52,7 @@ const SITE = {
       { src: "images/gallery-2.jpg", caption: "教堂 by: qaivu" },
       { src: "images/gallery-3.jpg", caption: "猪人农场 by: joey" },
       { src: "images/portrait.jpg", caption: "画像 by: Ruby" },
-      { src: "images/gallery-4.jpg", caption: "歌剧院（在建）by: joey QevD sofia Nemophilist（后勤）" },
+      { src: "images/gallery-4.jpg", caption: "歌剧院 by: joey QevD sofia Nemophilist（后勤）" },
     ],
   },
 
