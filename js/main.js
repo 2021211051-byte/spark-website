@@ -9,6 +9,31 @@
 
   const $ = (sel) => document.querySelector(sel);
 
+  /* ---------- 语言切换 ---------- */
+  const langToggle = $("#lang-toggle");
+  const isEn = SITE_LANG === "en";
+  document.documentElement.lang = isEn ? "en" : "zh-CN";
+  langToggle.textContent = isEn ? "中" : "EN";
+  langToggle.addEventListener("click", () => {
+    localStorage.setItem("site-lang", isEn ? "zh" : "en");
+    // 记住当前滚动位置，刷新后回到原位
+    sessionStorage.setItem("site-scroll", String(window.scrollY));
+    location.reload();
+  });
+  const savedScroll = sessionStorage.getItem("site-scroll");
+  if (savedScroll) {
+    sessionStorage.removeItem("site-scroll");
+    window.scrollTo(0, parseInt(savedScroll, 10) || 0);
+  }
+
+  /* ---------- 导航栏 ---------- */
+  $("#nav-about").textContent = SITE.nav.about;
+  $("#nav-gallery").textContent = SITE.nav.gallery;
+  $("#nav-hardware").textContent = SITE.nav.hardware;
+  $("#nav-team").textContent = SITE.nav.team;
+  $("#nav-map").textContent = SITE.nav.map;
+  $("#nav-join").textContent = SITE.nav.join;
+
   /* ---------- 首屏 ---------- */
   $("#hero-title").textContent = SITE.name;
   $("#hero-fullname").textContent = SITE.nameFull;
@@ -149,13 +174,16 @@
   const uptimeEl = $("#uptime");
   function tick() {
     const diff = Date.now() - birth.getTime();
-    if (isNaN(diff) || diff < 0) { uptimeEl.textContent = "敬请期待"; return; }
+    if (isNaN(diff) || diff < 0) { uptimeEl.textContent = SITE.comingSoon; return; }
     const days = Math.floor(diff / 86400000);
     const hrs = Math.floor((diff % 86400000) / 3600000);
     const mins = Math.floor((diff % 3600000) / 60000);
     const secs = Math.floor((diff % 60000) / 1000);
-    uptimeEl.textContent = days + "天" + hrs + "小时" + mins + "分" + secs + "秒";
+    const u = SITE.uptimeUnits;
+    uptimeEl.textContent =
+      days + u[0] + hrs + u[1] + mins + u[2] + secs + u[3];
   }
+  $("#uptime-prefix").textContent = SITE.uptimePrefix;
   tick();
   setInterval(tick, 1000);
 
@@ -244,13 +272,13 @@
     joinBtn.href = "#";
     joinBtn.addEventListener("click", (e) => {
       e.preventDefault();
-      const done = () => showToast("群号 " + joinLink + " 已复制，打开 QQ 搜索加群吧！");
+      const done = () => showToast(SITE.toastCopied.replace("{id}", joinLink));
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(joinLink).then(done).catch(() => {
-          window.prompt("复制群号：", joinLink);
+          window.prompt(SITE.promptCopy, joinLink);
         });
       } else {
-        window.prompt("复制群号：", joinLink);
+        window.prompt(SITE.promptCopy, joinLink);
       }
     });
   } else if (joinLink && joinLink !== "#") {

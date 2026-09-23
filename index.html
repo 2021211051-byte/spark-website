@@ -19,12 +19,13 @@
     </a>
     <button class="nav-toggle" id="nav-toggle" aria-label="菜单">☰</button>
     <div class="nav-links" id="nav-links">
-      <a href="#about">关于我们</a>
-      <a href="#gallery">画廊</a>
-      <a href="#hardware">硬件支持</a>
-      <a href="#team">成员列表</a>
-      <a href="http://nbe.rainplay.cn:55306" target="_blank" rel="noopener">地图</a>
-      <a href="#join" class="nav-cta">加入我们</a>
+      <a href="#about" id="nav-about">关于我们</a>
+      <a href="#gallery" id="nav-gallery">画廊</a>
+      <a href="#hardware" id="nav-hardware">硬件支持</a>
+      <a href="#team" id="nav-team">成员列表</a>
+      <a href="http://nbe.rainplay.cn:55306" target="_blank" rel="noopener" id="nav-map">地图</a>
+      <a href="#join" class="nav-cta" id="nav-join">加入我们</a>
+      <button class="lang-toggle" id="lang-toggle" type="button">EN</button>
     </div>
   </nav>
 
@@ -63,7 +64,7 @@
       <p class="section-tag">02 / GALLERY</p>
       <h2 class="gallery-title" id="gallery-title"></h2>
       <p class="gallery-subtitle" id="gallery-subtitle"></p>
-      <p class="uptime">服务器已运行 <span id="uptime">&nbsp;</span></p>
+      <p class="uptime"><span id="uptime-prefix">服务器已运行</span> <span id="uptime">&nbsp;</span></p>
       <div class="carousel-dots" id="carousel-dots"></div>
     </div>
     <button class="carousel-btn prev" id="carousel-prev" aria-label="上一张">‹</button>
