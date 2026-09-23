@@ -13,7 +13,7 @@
   const langToggle = $("#lang-toggle");
   const isEn = SITE_LANG === "en";
   document.documentElement.lang = isEn ? "en" : "zh-CN";
-  langToggle.textContent = isEn ? "中" : "EN";
+  langToggle.textContent = isEn ? "EN" : "中";
   langToggle.addEventListener("click", () => {
     localStorage.setItem("site-lang", isEn ? "zh" : "en");
     // 记住当前滚动位置，刷新后回到原位
