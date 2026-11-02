@@ -60,7 +60,7 @@
   });
 
   /* ---------- 画廊轮播 ---------- */
-  $("#gallery-title").textContent = SITE.gallery.title;
+  $("#gallery-corner").textContent = SITE.gallery.title;
   $("#gallery-subtitle").textContent = SITE.gallery.subtitle;
 
   const bg = $("#gallery-bg");

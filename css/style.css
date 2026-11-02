@@ -362,16 +362,16 @@ h2 {
   padding: 120px 24px 100px;
 }
 
-.gallery-title {
-  font-size: clamp(72px, 15vw, 170px);
-  font-weight: 900;
-  letter-spacing: clamp(8px, 2vw, 24px);
-  line-height: 1.15;
-  color: transparent;
-  text-shadow:
-    0 0 6px rgba(250, 248, 245, .5),
-    0 0 20px rgba(245, 81, 28, .22);
-  margin-bottom: 0;
+.gallery-corner {
+  position: absolute;
+  top: 96px;
+  left: 36px;
+  z-index: 2;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  letter-spacing: 4px;
+  color: rgba(250, 248, 245, .85);
+  text-shadow: 0 1px 6px rgba(26, 24, 22, .6);
 }
 
 .gallery-subtitle {
