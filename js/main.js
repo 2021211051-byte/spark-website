@@ -1,9 +1,3 @@
-/* ============================================================
- * SPARK 火花服 · 主逻辑
- * 从 config.js 的 SITE 读取内容并渲染页面。
- * 一般情况下不需要修改这个文件，改 config.js 就够了。
- * ============================================================ */
-
 (function () {
   "use strict";
 
@@ -16,7 +10,6 @@
   langToggle.textContent = isEn ? "EN" : "中";
   langToggle.addEventListener("click", () => {
     localStorage.setItem("site-lang", isEn ? "zh" : "en");
-    // 记住当前滚动位置，刷新后回到原位
     sessionStorage.setItem("site-scroll", String(window.scrollY));
     location.reload();
   });
@@ -76,14 +69,11 @@
     const im = document.createElement("img");
     im.alt = img.caption || SITE.gallery.title + " " + (i + 1);
     if (i === 0) {
-      // 首张立即加载
       im.src = img.src;
     } else {
-      // 非首张：懒加载，滚动到画廊附近时才真正请求
       im.loading = "lazy";
       im.dataset.src = img.src;
     }
-    // 竖版图片完整展示，不裁剪
     im.addEventListener("load", () => {
       if (im.naturalHeight > im.naturalWidth) slide.classList.add("is-portrait");
     });
@@ -107,7 +97,6 @@
     dotsBox.appendChild(dot);
   });
 
-  // 触发某张图的真正加载（尚未加载时）
   function loadImage(i) {
     const im = bg.children[i] && bg.children[i].querySelector("img");
     if (im && im.dataset.src && !im.src) {
@@ -116,7 +105,6 @@
     }
   }
 
-  // 画廊即将滚入视口时，按顺序陆续加载剩余图片
   let preloadIdx = 1;
   function preloadNext() {
     if (preloadIdx >= images.length) return;
@@ -151,7 +139,6 @@
     dotsBox.querySelectorAll("button").forEach((d, idx) =>
       d.classList.toggle("active", idx === current)
     );
-    // 竖版画像：单独取消上下变暗
     document.getElementById("gallery").classList.toggle(
       "no-dim",
       slides[current].classList.contains("is-portrait")
@@ -253,7 +240,6 @@
   const joinBtn = $("#join-button");
   joinBtn.textContent = SITE.footer.joinButton;
 
-  // 提示条（复制群号时显示）
   const toast = document.createElement("div");
   toast.style.cssText =
     "position:fixed;left:50%;bottom:40px;transform:translateX(-50%);" +
@@ -268,7 +254,6 @@
 
   const joinLink = SITE.footer.joinLink.trim();
   if (/^\d{5,}$/.test(joinLink)) {
-    // 纯数字 = QQ 群号，点击复制
     joinBtn.href = "#";
     joinBtn.addEventListener("click", (e) => {
       e.preventDefault();
